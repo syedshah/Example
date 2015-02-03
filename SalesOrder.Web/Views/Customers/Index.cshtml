@@ -1,0 +1,83 @@
+@model IEnumerable<SalesOrder.Entity.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            FirstName
+        </th>
+        <th>
+            LastName
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            City
+        </th>
+        <th>
+            Zip
+        </th>
+        <th>
+            Gender
+        </th>
+        <th>
+            State
+        </th>
+        <th>
+            Orders
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+        <td>
+			@item.FirstName
+        </td>
+        <td>
+			@item.LastName
+        </td>
+        <td>
+			@item.Email
+        </td>
+        <td>
+			@item.Address
+        </td>
+        <td>
+			@item.City
+        </td>
+        <td>
+			@item.Zip
+        </td>
+        <td>
+			@item.Gender
+        </td>
+        <td>
+			@(item.State == null ? "None" : item.State.Name)
+        </td>
+        <td>
+			@(item.Orders == null ? "None" : item.Orders.Count.ToString())
+        </td>
+    </tr>
+}
+
+</table>
+
+
